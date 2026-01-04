@@ -18,7 +18,7 @@ public class PersistentSpawnManager {
     /**
      * The config file path.
      */
-    public static final String CONFIG_FILE = "config/spawnpointonjoin.toml";
+    public static final String CONFIG_FILE = "config/persistentspawn.toml";
 
     /**
      * The currently registered spawn position.

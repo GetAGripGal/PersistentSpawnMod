@@ -18,7 +18,7 @@ import com.mojang.brigadier.arguments.BoolArgumentType;
  * the same location on every join.
  */
 public class PersistentSpawn implements ModInitializer {
-	public static final String MOD_ID = "spawnpointonjoin";
+	public static final String MOD_ID = "persistentspawn";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
