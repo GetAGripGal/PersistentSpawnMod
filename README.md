@@ -1,5 +1,7 @@
 A very simple mod that implements the functionality of spawning a player at the same location on every join.
 
+Written for fabric.
+
 ## Commands
 * `/setpersistentspawn` `<position> <dimension>` - Set the persitent spawn location and dimension.
 * `/setpersistentspawnenabled` `<enabled>` - Enable or disable the persistent spawn.
