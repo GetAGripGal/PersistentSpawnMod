@@ -19,4 +19,4 @@ The config is stored in `config/persistentspawn.toml`.
 If you wish to throw me a dollar, this can be done through modrinth, or in crypto.
 
 ### Wallets
-- XMR: `48E3iH61FSFMM4wvvo73LJcCgi9G2JN2J6KSXQJ2CAn8DnWufhyVUe49TXdkV9snVyaij8bgyTaaQhcCo3kcWQxMDLkkLJ7`
+XMR: `48E3iH61FSFMM4wvvo73LJcCgi9G2JN2J6KSXQJ2CAn8DnWufhyVUe49TXdkV9snVyaij8bgyTaaQhcCo3kcWQxMDLkkLJ7`
