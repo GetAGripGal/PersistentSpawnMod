@@ -14,7 +14,7 @@ The config is stored in `config/persistentspawn.toml`.
 * `z` - The z coordinate of the spawn location.
 * `dimension` - The dimension of the spawn location.
 
-* ## Support
+## Support
 
 If you wish to throw me a dollar, this can be done through modrinth, or in crypto.
 
