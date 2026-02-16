@@ -1,13 +1,14 @@
 package nl.getagripgal.persistentspawn;
 
 import java.io.File;
+import java.io.IOException;
 
 import com.moandjiezana.toml.Toml;
 import com.moandjiezana.toml.TomlWriter;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
@@ -44,7 +45,7 @@ public class PersistentSpawnManager {
             PersistentSpawnConfig config = toml.to(PersistentSpawnConfig.class);
 
             CurrentSpawn = new Vec3(config.x, config.y, config.z);
-            Dimension = ResourceKey.create(Registries.DIMENSION, Identifier.parse(config.dimension));
+            Dimension = ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse(config.dimension));
             Enabled = config.enabled;
         } catch (Exception e) {
             PersistentSpawn.LOGGER.error(
@@ -52,7 +53,7 @@ public class PersistentSpawnManager {
                     e);
             PersistentSpawnConfig defaultConfig = PersistentSpawnConfig.defaultConfig();
             CurrentSpawn = new Vec3(defaultConfig.x, defaultConfig.y, defaultConfig.z);
-            Dimension = ResourceKey.create(Registries.DIMENSION, Identifier.parse(defaultConfig.dimension));
+            Dimension = ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse(defaultConfig.dimension));
             Enabled = defaultConfig.enabled;
         }
     }
@@ -63,15 +64,15 @@ public class PersistentSpawnManager {
     public static void syncToDisk() {
         try {
             PersistentSpawnConfig config = new PersistentSpawnConfig();
-            config.x = (int) CurrentSpawn.x;
-            config.y = (int) CurrentSpawn.y;
-            config.z = (int) CurrentSpawn.z;
-            config.dimension = Dimension.identifier().toString();
+            config.x = CurrentSpawn.x;
+            config.y = CurrentSpawn.y;
+            config.z = CurrentSpawn.z;
+            config.dimension = Dimension.location().toString();
             config.enabled = Enabled;
 
             TomlWriter writer = new TomlWriter();
             writer.write(config, new File(CONFIG_FILE));
-        } catch (Exception e) {
+        } catch (IOException e) {
             PersistentSpawn.LOGGER.error("Failed to save persistent spawn config to disk.", e);
         }
     }

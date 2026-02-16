@@ -3,11 +3,11 @@ package nl.getagripgal.persistentspawn;
 import com.mojang.brigadier.context.CommandContext;
 
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.coordinates.Coordinates;
+import net.minecraft.commands.arguments.coordinates.Vec3Argument;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
 
 /**
@@ -21,15 +21,13 @@ public class CommandHandlers {
      * @return The exit code.
      */
     public static int setPersistentSpawn(CommandContext<CommandSourceStack> context) {
-        Coordinates positionArgument = context.getArgument("position", Coordinates.class);
-        Identifier dimensionArgument = context.getArgument("dimension", Identifier.class);
+        Vec3 position = Vec3Argument.getVec3(context, "position");
+        ResourceLocation dimensionArgument = context.getArgument("dimension", ResourceLocation.class);
 
-        PersistentSpawnManager.CurrentSpawn = positionArgument.getPosition(context.getSource());
+        PersistentSpawnManager.CurrentSpawn = position;
         PersistentSpawnManager.Dimension = ResourceKey.create(Registries.DIMENSION, dimensionArgument);
 
         PersistentSpawnManager.syncToDisk();
-
-        Vec3 position = PersistentSpawnManager.CurrentSpawn;
         context.getSource()
                 .sendSuccess(
                         () -> Component.literal("Set spawn at %s in %s".formatted(position.toString(),
