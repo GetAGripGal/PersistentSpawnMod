@@ -4,9 +4,9 @@ package nl.getagripgal.persistentspawn;
  * The spawn config as stored on disk.
  */
 public class PersistentSpawnConfig {
-    public int x;
-    public int y;
-    public int z;
+    public double x;
+    public double y;
+    public double z;
     public String dimension;
     public boolean enabled;
 

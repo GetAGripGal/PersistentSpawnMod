@@ -1,6 +1,7 @@
 package nl.getagripgal.persistentspawn;
 
 import java.io.File;
+import java.io.IOException;
 
 import com.moandjiezana.toml.Toml;
 import com.moandjiezana.toml.TomlWriter;
@@ -63,15 +64,15 @@ public class PersistentSpawnManager {
     public static void syncToDisk() {
         try {
             PersistentSpawnConfig config = new PersistentSpawnConfig();
-            config.x = (int) CurrentSpawn.x;
-            config.y = (int) CurrentSpawn.y;
-            config.z = (int) CurrentSpawn.z;
+            config.x = CurrentSpawn.x;
+            config.y = CurrentSpawn.y;
+            config.z = CurrentSpawn.z;
             config.dimension = Dimension.identifier().toString();
             config.enabled = Enabled;
 
             TomlWriter writer = new TomlWriter();
             writer.write(config, new File(CONFIG_FILE));
-        } catch (Exception e) {
+        } catch (IOException e) {
             PersistentSpawn.LOGGER.error("Failed to save persistent spawn config to disk.", e);
         }
     }
