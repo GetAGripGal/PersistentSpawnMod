@@ -1,3 +1,8 @@
+# MOVED REPO
+This repository has been moved to my own git server at: [https://git.getagripgal.nl/GetAGripGal/PersistentSpawnMod](https://git.getagripgal.nl/GetAGripGal/PersistentSpawnMod).
+
+# Persistent Spawn Mod
+
 A very simple mod that implements the functionality of spawning a player at the same location on every join.
 
 Written for fabric.
